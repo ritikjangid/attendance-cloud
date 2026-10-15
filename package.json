@@ -1,0 +1,17 @@
+{
+  "name": "biometric-attendance-mobile",
+  "version": "2.0.0",
+  "description": "Cloud-hosted 24/7 Mobile Biometric Attendance Dashboard for Secureye S-FB3K / Realand M61",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "author": "Machining Point",
+  "license": "ISC"
+}

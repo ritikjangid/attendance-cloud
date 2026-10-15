@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: attendance-cloud
+    env: node
+    plan: free
+    region: singapore
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.0
+      - key: PORT
+        value: 10000

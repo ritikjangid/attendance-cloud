@@ -1,0 +1,11 @@
+{
+  "companyName": "Machining Point",
+  "shiftStart": "09:00",
+  "shiftEnd": "18:00",
+  "marginMinutes": 30,
+  "sms": {
+    "enabled": true,
+    "apiKey": "txb_7k1Yvp5lf8XWAJ6tybNmtr0EJUuDQ1aM",
+    "deviceId": "6ad0f12b74e21da91a4fb932"
+  }
+}
