@@ -723,10 +723,31 @@ function analyzeDayAttendance(userId, logs, emp, targetDate) {
   };
 }
 
+// Request Log Tracker for Diagnostics
+const recentRequests = [];
+
 // HTTP Server
 const server = http.createServer((req, res) => {
   const urlObj = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   const pathname = urlObj.pathname;
+
+  // Track all non-asset requests
+  if (!pathname.match(/\.(css|js|png|ico)$/)) {
+    recentRequests.unshift({
+      time: new Date().toISOString(),
+      method: req.method,
+      url: req.url,
+      headers: req.headers,
+      ip: req.socket.remoteAddress
+    });
+    if (recentRequests.length > 50) recentRequests.pop();
+  }
+
+  // Debug Endpoint to view all recent machine / client requests
+  if (pathname === '/api/debug-requests') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    return res.end(JSON.stringify(recentRequests, null, 2));
+  }
 
   // Case-insensitive header lookup helper
   const getHeader = (name) => {
